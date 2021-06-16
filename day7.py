@@ -65,15 +65,21 @@ display=[]
 for i in range(0,len(chosen_word)):
     display+=['']
 k=0
-while(k<=len(chosen_word)):
-    k=k+1
-    inp=input("Enter letter: ").lower()
-    for j in range(0,len(chosen_word)):
-        if(chosen_word[j]==inp):
-            display[j]=inp
-            print(display)
+life=0
+while(k<=7):
+  inp=input("Enter letter: ").lower()
+  if(inp not in chosen_word and range(0,len(stages))):
+    print(stages[life])
+    life+=1
+  for j in range(0,len(chosen_word)):
+      if(chosen_word[j]==inp):
+          display[j]=inp
+          print(display)
+          k+=1
 
-if('' not in display):
+
+            
+if(' ' not in display):
     print("You Win")
 else:
     print("You loose")
