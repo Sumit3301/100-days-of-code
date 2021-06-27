@@ -10,7 +10,7 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 def encrypt(plain_text, shift_amount):
-    cipher_text=""
+    cipher_text=" "
     for letter in plain_text:
         position=plain_text.index(letter)
         new_position=position+shift_amount
@@ -22,7 +22,7 @@ def encrypt(plain_text, shift_amount):
 
 
 def decrypt(encoded,shift_amount):
-    decipher_text=""
+    decipher_text=" "
     for letter in encoded:
         position=encoded.index(letter)
         new_position=position-shift_amount
@@ -33,7 +33,7 @@ def decrypt(encoded,shift_amount):
 if(direction=='encode'):
     encrypt(plain_text=text, shift_amount=shift)
 elif(direction=='decode'):
-    decrypt(encrypt=text, shift_amount=shift)
+    decrypt(encoded=text, shift_amount=shift)
     
 
 
