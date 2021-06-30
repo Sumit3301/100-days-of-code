@@ -1,4 +1,9 @@
-#Calculator
+
+#Dictionary Calculator
+import pyfiglet
+  
+result = pyfiglet.figlet_format("Calculator")
+print(result)   
 def add(first, second):
   return first +second
 
@@ -19,8 +24,14 @@ operations = {
   "/": divide
 }
 
-second=float(input("Enter your second number"))
+
 
 for symbols in operations:
-    operat=input("Enter your operation")
+  print(symbols)
+operat=input("Enter your operation")
+second=float(input("Enter your second number"))
+func=operations[operat]
+print(func(first,second))
+
+
     
