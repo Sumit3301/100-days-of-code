@@ -301,3 +301,32 @@ data = [
         'country': 'United States'
     }
 ]
+def next_data():
+    datar=random.choice(data)
+    return datar
+
+import random
+option=random.choice(data)
+life=0
+while(True):
+    datar=next_data()
+    print(f"{option['name']} has {option['follower_count']} and is a {option['description']} from {option['country']}    (A)   ")
+    print( '\n')
+    print(f"{datar['name']} has {datar['follower_count']} and is a {datar['description']} from {datar['country']}    (B)   ")
+    print( '\n')
+    ch=input("Who do you think has the most followers? A or B  :")
+    if(ch=='A' or ch=='a') and (option['follower_count'] > datar['follower_count']):
+        life+=1
+        print(f'Correct answer, life={life}')
+    elif(ch=='b' or ch=='B') and (datar['follower_count'] > option['follower_count']):
+        life+=1
+        print(f'Correct answer life={life}')
+        option=datar
+    else:
+        print("You loose")
+        print(f'your Final Score is {life}')
+        break
+
+
+
+
