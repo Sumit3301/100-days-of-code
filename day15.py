@@ -43,18 +43,42 @@ cappiccino={
     "milk":70,
     "coffee":40
 }
-resources = {
+
+
+while(True):
+    resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
 }
-
-while(True):
     choice=input("What would you like? (espresso/latte/cappuccino): ")
-    if(choice=='espresso'):
-        if((resources["water"]>espresso["water"]) and (resources["milk"]>espresso["milk"]) and (resources["coffee"]>espresso["coffee"])):
-            print(cappiccino)
-             
-        
+    money=input("Enter your money in $")
+    print(f'Your amount = {money}')
+    if(choice=='espresso'):   
+        resources["water"]=resources["water"]-cappiccino["water"]
+        resources["milk"]=resources["milk"]-cappiccino["milk"]
+        resources["coffee"]=resources["coffee"]-cappiccino["coffee"]
+        money=money-1
+        if((resources["water"]>0) and (resources["milk"]>0) and (resources["coffee"]>0)):
+            print(f'{resources} \n Money:{money}$')  
+    if(choice=='latte'):
+        resources["water"]=resources["water"]-latte["water"]
+        resources["milk"]=resources["milk"]-latte["milk"]
+        resources["coffee"]=resources["coffee"]-latte["coffee"]
+        money=money-1.2
+        if((resources["water"]>=0) and (resources["milk"]>=0) and (resources["coffee"]>=0)):
+            print(f'{resources} \n Money:{money}$')
+            
+    if(choice=='cappuccino'):
+        resources["water"]=resources["water"]-cappiccino["water"]
+        resources["milk"]=resources["milk"]-cappiccino["milk"]
+        resources["coffee"]=resources["coffee"]-cappiccino["coffee"]
+        money=money-1.5
+        if((resources["water"]>=0) and (resources["milk"]>=0) and (resources["coffee"]>=0)):
+            print(f'{resources} \n Money:{money}$')
+            
+    if(choice=='report'):
+
+
 
 
