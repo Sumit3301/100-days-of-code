@@ -55,10 +55,10 @@ while(True):
     money=input("Enter your money in $")
     print(f'Your amount = {money}')
     if(choice=='espresso'):   
-        resources["water"]=resources["water"]-cappiccino["water"]
-        resources["milk"]=resources["milk"]-cappiccino["milk"]
-        resources["coffee"]=resources["coffee"]-cappiccino["coffee"]
-        money=money-1
+        resources["water"]=resources["water"]-MENU["espresso"]["ingredients"]["water"]
+        resources["milk"]=resources["milk"]-["espresso"]["ingredients"]["milk"]
+        resources["coffee"]=resources["coffee"]-["espresso"]["ingredients"]["coffee"]
+        money=money-[espresso]["cost"]
         if((resources["water"]>0) and (resources["milk"]>0) and (resources["coffee"]>0)):
             print(f'{resources} \n Money:{money}$')  
     if(choice=='latte'):
@@ -78,6 +78,7 @@ while(True):
             print(f'{resources} \n Money:{money}$')
             
     if(choice=='report'):
+        print(f'Here is a summary of contents {report}')
 
 
 
