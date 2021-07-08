@@ -43,6 +43,7 @@ cappiccino={
     "milk":70,
     "coffee":40
 }
+profit=0.00
 def check_resources(order_ingredients):
     for item in order_ingredients:
         if(order_ingredients[item]>=resources[item]):
@@ -50,17 +51,19 @@ def check_resources(order_ingredients):
             return False
     return True
         
-def process_coins():
+"""def process_coins():
     print("Please insert coins")
     total=int(input("Enter number of quaters?: "))*0.5
     total+=int(input("Enter number of dimes? : "))*0.1
     total+=int(input("Enter many nickels?:"))*0.05
     total+=int(input("how many pennies?:"))*0.01
     return total
-
+"""
 def profit(money_recieved,drink_cost):
     if(money_recieved>drink_cost):
-        return True
+        global profit
+        profit+=drink_cost
+        return profit
     
 
 
@@ -69,33 +72,29 @@ while(True):
     "water": 300,
     "milk": 200,
     "coffee": 100,
-}
-    profit=0
+}   
     choice=input("What would you like? (espresso/latte/cappuccino): ") #enter choices
-    drink=MENU[choice] 
-    type(drink["cost"])
-    money=process_coins() #money entered
+    drink=MENU[choice]
+    cost_of_drink=drink["cost"] #money for drink
+    money=float(input("Enter your money:"))
     print(f'Your amount = {money}')
     if(choice=='espresso'):   
         if(check_resources(drink["ingredients"])):
-            print(f'Balance left is {total_money}$')
-            print(f'{resources} \n Money:{total_money}$')  
+            balance_money=money-drink["cost"]
+            print(f'Balance left is {balance_money}$')
+            print(f'{resources} \n Money:{money}$')  
     if(choice=='latte'):
-        resources["water"]=resources["water"]-MENU["latte"]["ingredients"]["water"]
-        resources["milk"]=resources["milk"]-MENU["latte"]["ingredients"]["milk"]
-        resources["coffee"]=resources["coffee"]-MENU["latte"]["ingredients"]["coffee"]
-        money=money-MENU[latte]["cost"]
-        if((resources["water"]>=0) and (resources["milk"]>=0) and (resources["coffee"]>=0)):
-            print(f'{resources} \n Money:{money}$')
-            
+        if(check_resources(drink["ingredients"])):
+            balance_money=money-drink["cost"]
+            print(f'Balance left is {balance_money}$')
+            print(f'{resources} \n Money:{money}$') 
+            profit=profit+drink["cost"]
     if(choice=='cappuccino'):
-        resources["water"]=resources["water"]-cappiccino["water"]
-        resources["milk"]=resources["milk"]-cappiccino["milk"]
-        resources["coffee"]=resources["coffee"]-cappiccino["coffee"]
-        money=money-1.5
-        if((resources["water"]>=0) and (resources["milk"]>=0) and (resources["coffee"]>=0)):
-            print(f'{resources} \n Money:{money}$')
-            
+        if(check_resources(drink["ingredients"])):
+            balance_money=money-drink["cost"]
+            print(f'Balance left is {balance_money}$')
+            print(f'{resources} \n Money:{money}$') 
+            profit=profit+drink["cost"]
     if(choice=='report'):
         print(f'Here is a summary of contents {resources}')
 
