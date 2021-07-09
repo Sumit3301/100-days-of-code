@@ -43,7 +43,8 @@ cappiccino={
     "milk":70,
     "coffee":40
 }
-profit=0.00
+profit=0
+
 def check_resources(order_ingredients):
     for item in order_ingredients:
         if(order_ingredients[item]>=resources[item]):
@@ -59,11 +60,7 @@ def check_resources(order_ingredients):
     total+=int(input("how many pennies?:"))*0.01
     return total
 """
-def profit(money_recieved,drink_cost):
-    if(money_recieved>drink_cost):
-        global profit
-        profit+=drink_cost
-        return profit
+        
     
 
 
@@ -75,28 +72,57 @@ while(True):
 }   
     choice=input("What would you like? (espresso/latte/cappuccino): ") #enter choices
     drink=MENU[choice]
-    cost_of_drink=drink["cost"] #money for drink
-    money=float(input("Enter your money:"))
-    print(f'Your amount = {money}')
+    cost_of_drink=float(drink["cost"]) #money for drink
     if(choice=='espresso'):   
         if(check_resources(drink["ingredients"])):
-            balance_money=money-drink["cost"]
-            print(f'Balance left is {balance_money}$')
-            print(f'{resources} \n Money:{money}$')  
+            money=float(input("Enter your money:"))
+            print(f'Your amount = {money}')
+            resources["water"]=resources["water"]-drink["ingredients"]["water"]
+            resources["coffee"]=resources["coffee"]-drink["ingredients"]["coffee"]
+            balance_money=money-cost_of_drink
+            if(balance_money<0):
+                print("Not sufficient money")
+                break
+            else:
+                print("Transaction successful")
+                profit+=cost_of_drink
+                print(f'Here is your balance is {balance_money}$')
+        else:
+            print("Not sufficient resources")
     if(choice=='latte'):
         if(check_resources(drink["ingredients"])):
+            money=float(input("Enter your money:"))
+            print(f'Your amount = {money}')
+            resources["water"]=resources["water"]-drink["ingredients"]["water"]
+            resources["coffee"]=resources["coffee"]-drink["ingredients"]["coffee"]
+            resources["milk"]=resources["milk"]-drink["ingredients"]["milk"]
             balance_money=money-drink["cost"]
-            print(f'Balance left is {balance_money}$')
-            print(f'{resources} \n Money:{money}$') 
-            profit=profit+drink["cost"]
+            if(balance_money<0):
+                print("Not sufficient money")
+                break
+            else:
+                print("Transaction successful")
+                profit+=cost_of_drink
+                print(f'Balance left is {balance_money}$')
+        else:
+            print("Not sufficient resources")
     if(choice=='cappuccino'):
         if(check_resources(drink["ingredients"])):
+            money=float(input("Enter your money:"))
+            print(f'Your amount = {money}')
+            resources["water"]=resources["water"]-drink["ingredients"]["water"]
+            resources["coffee"]=resources["coffee"]-drink["ingredients"]["coffee"]
+            resources["milk"]=resources["milk"]-drink["ingredients"]["milk"]
             balance_money=money-drink["cost"]
-            print(f'Balance left is {balance_money}$')
-            print(f'{resources} \n Money:{money}$') 
-            profit=profit+drink["cost"]
-    if(choice=='report'):
-        print(f'Here is a summary of contents {resources}')
+            if(balance_money<0):
+                print("Not sufficient money")
+                break
+            else:
+                print("Transaction successful")
+                profit+=cost_of_drink
+                print(f'Balance left is {balance_money}$')
+        else:
+            print("Not sufficient resources")
 
 
 
