@@ -19,10 +19,18 @@ if bet:
 
 while israce:
     for turtle in all_turtles:
-        if
-    for i in range(0,len(all_turtles)):
+        if turtle.xcor()>180:
+            winning_color=turtle.pencolor()
+            if(winning_color==bet):
+                print("You Won")
+                break
+            else:
+                print("You Lost")
+                break
+
+        
         random_increment=random.randint(0,10)
-        turtle.forward()
+        turtle.forward(random_increment)
 
 screen.listen()
 screen.exitonclick()
