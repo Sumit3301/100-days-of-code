@@ -1,27 +1,28 @@
-from turtle import Turtle,Screen, listen
+from hashlib import new
+from turtle import Turtle,Screen, color, listen
 import turtle
-
-timmy1=Turtle()
-timmy2=Turtle()
-timmy3=Turtle()
-timmy4=Turtle()
+import random
+colors=["red","green","blue","yellow"]
 screen=Screen()
-timmy1.color("red")
-timmy2.color("blue")
-timmy3.color("green")
-timmy4.color("yellow")
-
-turtle.setup(width=400,height=400)
-timmy1.goto(x=-170,y=100)
-timmy2.goto(x=-170,y=50)
-timmy3.goto(x=-170,y=0)
-timmy4.goto(x=-170,y=-50)
-
-
+all_turtles=[]
+y_pos=[-70,-40,-10,20]
 bet=screen.textinput(title="Make your bet",prompt="Which turtle will win?Enter a color?:")
-def start_taste():
-    
+screen.setup(width=400,height=400)
+for turtle_index in range(0,4):
+    new_turtle=Turtle(shape="turtle")
+    new_turtle.color(colors[turtle_index])
+    new_turtle.goto(x=-170,y=y_pos[turtle_index])
+    all_turtles.append(new_turtle)
 
+if bet:
+    israce=True
+
+while israce:
+    for turtle in all_turtles:
+        if
+    for i in range(0,len(all_turtles)):
+        random_increment=random.randint(0,10)
+        turtle.forward()
 
 screen.listen()
 screen.exitonclick()
