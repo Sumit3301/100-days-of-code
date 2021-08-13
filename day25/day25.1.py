@@ -32,6 +32,9 @@ dict = {
 data=pd.DataFrame(dict) #dict to dataframe
 print(data)
 
+
+data=pd.read_csv("weather_data.csv")
+print(data)
 data.to_csv("updated_data.csv") #dataferame to csv
 
 
